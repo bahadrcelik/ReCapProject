@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -20,48 +22,44 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.DailyPrice> 0 && car.Description.Length>2)
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
+        }
+
+        public IResult Delete(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAll()
+        {
+            if (DateTime.Now.Hour == 18)
             {
-                _carDal.Add(car);
-                Console.WriteLine("New Car Was Added");
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
-            else
-            {
-                Console.WriteLine("ERROR ! Car Not Added");
-            }
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
-        public void Delete(Car car)
+        public IDataResult<List<CarDetailDto>> GetCarDetailDtos()
         {
-            Console.WriteLine("Car Deleted !");
+            throw new NotImplementedException();
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll();
-
+            throw new NotImplementedException();
         }
 
-        public List<CarDetailDto> GetCarDetailDtos()
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetCarDetails();
+            throw new NotImplementedException();
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IResult Update(Car car)
         {
-            return _carDal.GetAll(b => b.BrandId == brandId);
-        }
-
-        public List<Car> GetCarsByColorId(int colorId)
-        {
-            return _carDal.GetAll(c=> c.ColorId == colorId);
-        }
-
-        public void Update(Car car)
-        {
-            Console.WriteLine("Car Updated !");
+            throw new NotImplementedException();
         }
     }
 }
