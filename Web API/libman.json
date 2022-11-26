@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery-image-upload@1.2.0",
+      "destination": "wwwroot/Upload/jquery-image-upload/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "wwwroot/",
+      "destination": "wwwroot/Upload/wwwroot/"
+    }
+  ]
+}

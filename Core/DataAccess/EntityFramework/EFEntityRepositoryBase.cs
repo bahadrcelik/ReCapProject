@@ -51,7 +51,7 @@ namespace Core.DataAccess.EntityFramework
                     : context.Set<TEntiy>().Where(filter).ToList();
             }
         }
-
+            
         public void Update(TEntiy entity)
         {
             using (TContext context = new TContext())

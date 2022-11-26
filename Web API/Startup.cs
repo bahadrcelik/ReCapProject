@@ -75,6 +75,8 @@ namespace Web_API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseStaticFiles();
         }
     }
 }
