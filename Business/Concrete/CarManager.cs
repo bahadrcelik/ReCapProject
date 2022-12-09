@@ -1,5 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,6 +26,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("car.add,admin")]
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
@@ -33,6 +40,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour == 18)

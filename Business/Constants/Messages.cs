@@ -22,6 +22,8 @@ namespace Business.Constants
 
         public static string MaintenanceTime = "Sistem Bakımda";
 
+        public static string AuthorizationDenied = "Yetkiniz yok";
+
 
     }
 }
