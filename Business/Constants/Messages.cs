@@ -24,6 +24,17 @@ namespace Business.Constants
 
         public static string AuthorizationDenied = "Yetkiniz yok";
 
+        public static string AddedSuccessMessage = "Kullanıcı eklendi.";
 
+        public static string DeletedSuccessMessage = "kullanıcı silindi.";
+
+        public static string BrandDeleted = "Marka Silindi";
+        public static string BrandUpdated = "Marka güncellendi";
+        public static string CarDeleted = "Araç Silindi";
+        public static string GetCarDetail = "Aracın detayları ekranda";
+        public static string GetCarsByColor = "ssadasd";
+
+        public static string CarUpdated = "Araç güncellendi";
+        public static string RentalDetails = "Kiralama bilgileri ekranda.";
     }
 }

@@ -56,6 +56,7 @@ namespace Web_API
             //services.AddSingleton<IUserDal, EFUserDal>();
 
             services.AddControllers();
+            services.AddCors();
 
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
@@ -94,7 +95,8 @@ namespace Web_API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web_API v1"));
             }
-            
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

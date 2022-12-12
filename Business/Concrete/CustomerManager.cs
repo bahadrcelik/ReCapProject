@@ -19,17 +19,20 @@ namespace Business.Concrete
         }
         public IResult Add(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Add(customer);
+            return new SuccessResult("Müşteri Eklendi");
         }
 
         public IResult Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Delete(customer);
+            return new SuccessResult("Müşteri Silindi");
         }
 
         public IResult Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(customer);
+            return new SuccessResult("Müşteri bilgileri güncellendi");
         }
     }
 }
